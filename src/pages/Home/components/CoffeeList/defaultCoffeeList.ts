@@ -1,6 +1,19 @@
 import { ICoffeeCardProps } from '../CoffeeCard'
 
 import imgExpressoTradicional from '../../../../assets/Type=Expresso.png'
+import imgExpressoAmericano from '../../../../assets/Type=Americano.png'
+import imgExpressoCremoso from '../../../../assets/Type=Expresso Cremoso.png'
+import imgExpressoGelado from '../../../../assets/Type=Café Gelado.png'
+import imgCafeComLeite from '../../../../assets/Type=Café com Leite.png'
+import imgLatte from '../../../../assets/Type=Latte.png'
+import imgCapuccino from '../../../../assets/Type=Capuccino.png'
+import imgMacchiato from '../../../../assets/Type=Macchiato.png'
+import imgMocaccino from '../../../../assets/Type=Mocaccino.png'
+import imgChocolateQuente from '../../../../assets/Type=Chocolate Quente.png'
+import imgCubano from '../../../../assets/Type=Cubano.png'
+import imgHavaiano from '../../../../assets/Type=Havaiano.png'
+import imgArabe from '../../../../assets/Type=Árabe.png'
+import imgIrlandes from '../../../../assets/Type=Irlandês.png'
 
 export const defaultCoffeeList: ICoffeeCardProps[] = [
   {
@@ -13,7 +26,7 @@ export const defaultCoffeeList: ICoffeeCardProps[] = [
   },
   {
     id: 'expressoAmericano',
-    imgSrc: '/src/assets/Type=Americano.png',
+    imgSrc: imgExpressoAmericano,
     tags: ['tradicional'],
     title: 'Expresso Americano',
     subtitle: 'Expresso diluído, menos intenso que o tradicional',
@@ -21,7 +34,7 @@ export const defaultCoffeeList: ICoffeeCardProps[] = [
   },
   {
     id: 'expressoCremoso',
-    imgSrc: '/src/assets/Type=Expresso Cremoso.png',
+    imgSrc: imgExpressoCremoso,
     tags: ['tradicional'],
     title: 'Expresso Cremoso',
     subtitle: 'Café expresso tradicional com espuma cremosa',
@@ -29,7 +42,7 @@ export const defaultCoffeeList: ICoffeeCardProps[] = [
   },
   {
     id: 'expressoGelado',
-    imgSrc: '/src/assets/Type=Café Gelado.png',
+    imgSrc: imgExpressoGelado,
     tags: ['tradicional', 'gelado'],
     title: 'Expresso Gelado',
     subtitle: 'Bebida preparada com café expresso e cubos de gelo',
@@ -37,7 +50,7 @@ export const defaultCoffeeList: ICoffeeCardProps[] = [
   },
   {
     id: 'cafeComLeite',
-    imgSrc: '/src/assets/Type=Café com Leite.png',
+    imgSrc: imgCafeComLeite,
     tags: ['tradicional', 'com leite'],
     title: 'Café com Leite',
     subtitle: 'Meio a meio de expresso tradicional com leite vaporizado',
@@ -45,7 +58,7 @@ export const defaultCoffeeList: ICoffeeCardProps[] = [
   },
   {
     id: 'latte',
-    imgSrc: '/src/assets/Type=Latte.png',
+    imgSrc: imgLatte,
     tags: ['tradicional', 'com leite'],
     title: 'Latte',
     subtitle: 'Uma dose de café expresso com o dobro de leite e espuma cremosa',
@@ -53,7 +66,7 @@ export const defaultCoffeeList: ICoffeeCardProps[] = [
   },
   {
     id: 'capuccino',
-    imgSrc: '/src/assets/Type=Capuccino.png',
+    imgSrc: imgCapuccino,
     tags: ['tradicional', 'com leite'],
     title: 'Capuccino',
     subtitle: 'Bebida com canela feita de doses iguais de café, leite e espuma',
@@ -61,7 +74,7 @@ export const defaultCoffeeList: ICoffeeCardProps[] = [
   },
   {
     id: 'macchiato',
-    imgSrc: '/src/assets/Type=Macchiato.png',
+    imgSrc: imgMacchiato,
     tags: ['tradicional', 'com leite'],
     title: 'Macchiato',
     subtitle: 'Café expresso misturado com um pouco de leite quente e espuma',
@@ -69,7 +82,7 @@ export const defaultCoffeeList: ICoffeeCardProps[] = [
   },
   {
     id: 'mocaccino',
-    imgSrc: '/src/assets/Type=Mochaccino.png',
+    imgSrc: imgMocaccino,
     tags: ['tradicional', 'com leite'],
     title: 'Mocaccino',
     subtitle: 'Café expresso com calda de chocolate, pouco leite e espuma',
@@ -77,7 +90,7 @@ export const defaultCoffeeList: ICoffeeCardProps[] = [
   },
   {
     id: 'chocolateQuente',
-    imgSrc: '/src/assets/Type=Chocolate Quente.png',
+    imgSrc: imgChocolateQuente,
     tags: ['especial', 'com leite'],
     title: 'Chocolate Quente',
     subtitle: 'Bebida feita com chocolate dissolvido no leite quente e café',
@@ -85,7 +98,7 @@ export const defaultCoffeeList: ICoffeeCardProps[] = [
   },
   {
     id: 'cubano',
-    imgSrc: '/src/assets/Type=Cubano.png',
+    imgSrc: imgCubano,
     tags: ['especial', 'alcoólico', 'gelado'],
     title: 'Cubano',
     subtitle: 'Drink gelado de café expresso com rum, creme de leite e hortelã',
@@ -93,7 +106,7 @@ export const defaultCoffeeList: ICoffeeCardProps[] = [
   },
   {
     id: 'havaiano',
-    imgSrc: '/src/assets/Type=Havaiano.png',
+    imgSrc: imgHavaiano,
     tags: ['especial'],
     title: 'Havaiano',
     subtitle: 'Bebida adocicada preparada com café e leite de coco',
@@ -101,7 +114,7 @@ export const defaultCoffeeList: ICoffeeCardProps[] = [
   },
   {
     id: 'árabe',
-    imgSrc: '/src/assets/Type=Árabe.png',
+    imgSrc: imgArabe,
     tags: ['especial'],
     title: 'Árabe',
     subtitle: 'Bebida preparada com grãos de café árabe e especiarias',
@@ -109,7 +122,7 @@ export const defaultCoffeeList: ICoffeeCardProps[] = [
   },
   {
     id: 'irlandês',
-    imgSrc: '/src/assets/Type=Irlandês.png',
+    imgSrc: imgIrlandes,
     tags: ['especial', 'alcoólico'],
     title: 'Irlandês',
     subtitle: 'Bebida a base de café, uísque irlandês, açúcar e chantilly',

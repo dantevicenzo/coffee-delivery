@@ -22,6 +22,36 @@ export const GlobalStyle = createGlobalStyle`
     color: ${(props) => props.theme.color.baseTitle};
   }
 
+  h1 {
+    font-size: ${(props) => props.theme.typography.baloo2.sizes.titleXl.size};
+    line-height: ${(props) =>
+      props.theme.typography.baloo2.sizes.titleXl.lineHeight};
+  }
+
+  h2 {
+    font-size: ${(props) => props.theme.typography.baloo2.sizes.titleL.size};
+    line-height: ${(props) =>
+      props.theme.typography.baloo2.sizes.titleL.lineHeight};
+  }
+
+  h3 {
+    font-size: ${(props) => props.theme.typography.baloo2.sizes.titleM.size};
+    line-height: ${(props) =>
+      props.theme.typography.baloo2.sizes.titleM.lineHeight};
+  }
+
+  h4 {
+    font-size: ${(props) => props.theme.typography.baloo2.sizes.titleS.size};
+    line-height: ${(props) =>
+      props.theme.typography.baloo2.sizes.titleS.lineHeight};
+  }
+
+  h5 {
+    font-size: ${(props) => props.theme.typography.baloo2.sizes.titleXs.size};
+    line-height: ${(props) =>
+      props.theme.typography.baloo2.sizes.titleXs.lineHeight};
+  }
+
   body, input, textarea, button {
     font-family: ${(props) => props.theme.typography.roboto.fontFamily};
     line-height: 1.3;

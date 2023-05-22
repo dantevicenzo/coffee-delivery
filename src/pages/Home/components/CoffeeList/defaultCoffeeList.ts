@@ -1,9 +1,11 @@
 import { ICoffeeCardProps } from '../CoffeeCard'
 
+import imgExpressoTradicional from '../../../../assets/Type=Expresso.png'
+
 export const defaultCoffeeList: ICoffeeCardProps[] = [
   {
     id: 'expressoTradicional',
-    imgSrc: '/src/assets/Type=Expresso.png',
+    imgSrc: imgExpressoTradicional,
     tags: ['tradicional'],
     title: 'Expresso Tradicional',
     subtitle: 'O tradicional café feito com água quente e grãos moídos',

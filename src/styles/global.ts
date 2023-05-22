@@ -26,30 +26,35 @@ export const GlobalStyle = createGlobalStyle`
     font-size: ${(props) => props.theme.typography.baloo2.sizes.titleXl.size};
     line-height: ${(props) =>
       props.theme.typography.baloo2.sizes.titleXl.lineHeight};
+    font-weight: 800;
   }
 
   h2 {
     font-size: ${(props) => props.theme.typography.baloo2.sizes.titleL.size};
     line-height: ${(props) =>
       props.theme.typography.baloo2.sizes.titleL.lineHeight};
+    font-weight: 800;
   }
 
   h3 {
     font-size: ${(props) => props.theme.typography.baloo2.sizes.titleM.size};
     line-height: ${(props) =>
       props.theme.typography.baloo2.sizes.titleM.lineHeight};
+    font-weight: 800;
   }
 
   h4 {
     font-size: ${(props) => props.theme.typography.baloo2.sizes.titleS.size};
     line-height: ${(props) =>
       props.theme.typography.baloo2.sizes.titleS.lineHeight};
+    font-weight: 700;
   }
 
   h5 {
     font-size: ${(props) => props.theme.typography.baloo2.sizes.titleXs.size};
     line-height: ${(props) =>
       props.theme.typography.baloo2.sizes.titleXs.lineHeight};
+    font-weight: 700;
   }
 
   body, input, textarea, button {

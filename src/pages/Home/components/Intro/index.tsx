@@ -1,4 +1,4 @@
-import introImage from '../../../assets/home-intro-image.png'
+import introImage from '../../../../assets/home-intro-image.png'
 import {
   Container,
   Item,

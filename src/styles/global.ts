@@ -5,6 +5,8 @@ export const GlobalStyle = createGlobalStyle`
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+
+    transition: color, background-color 0.15s;
   }
 
   :focus {
@@ -23,35 +25,40 @@ export const GlobalStyle = createGlobalStyle`
   }
 
   h1 {
-    font-size: ${(props) => props.theme.typography.baloo2.sizes.titleXl.size};
+    font-size: ${(props) =>
+      props.theme.typography.baloo2.sizes.titleXl.fontSize};
     line-height: ${(props) =>
       props.theme.typography.baloo2.sizes.titleXl.lineHeight};
     font-weight: 800;
   }
 
   h2 {
-    font-size: ${(props) => props.theme.typography.baloo2.sizes.titleL.size};
+    font-size: ${(props) =>
+      props.theme.typography.baloo2.sizes.titleL.fontSize};
     line-height: ${(props) =>
       props.theme.typography.baloo2.sizes.titleL.lineHeight};
     font-weight: 800;
   }
 
   h3 {
-    font-size: ${(props) => props.theme.typography.baloo2.sizes.titleM.size};
+    font-size: ${(props) =>
+      props.theme.typography.baloo2.sizes.titleM.fontSize};
     line-height: ${(props) =>
       props.theme.typography.baloo2.sizes.titleM.lineHeight};
     font-weight: 800;
   }
 
   h4 {
-    font-size: ${(props) => props.theme.typography.baloo2.sizes.titleS.size};
+    font-size: ${(props) =>
+      props.theme.typography.baloo2.sizes.titleS.fontSize};
     line-height: ${(props) =>
       props.theme.typography.baloo2.sizes.titleS.lineHeight};
     font-weight: 700;
   }
 
   h5 {
-    font-size: ${(props) => props.theme.typography.baloo2.sizes.titleXs.size};
+    font-size: ${(props) =>
+      props.theme.typography.baloo2.sizes.titleXs.fontSize};
     line-height: ${(props) =>
       props.theme.typography.baloo2.sizes.titleXs.lineHeight};
     font-weight: 700;
@@ -68,5 +75,16 @@ export const GlobalStyle = createGlobalStyle`
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     -webkit-text-size-adjust: 100%;
+  }
+
+  input[type="number"] {
+    -webkit-appearance: textfield;
+    -moz-appearance: textfield;
+    appearance: textfield;
+  }
+
+  input[type=number]::-webkit-inner-spin-button, 
+  input[type=number]::-webkit-outer-spin-button { 
+    -webkit-appearance: none;
   }
 `

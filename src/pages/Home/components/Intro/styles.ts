@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import backgroundImage from '../../../assets/home-intro-background.svg'
+import backgroundImage from '../../../../assets/home-intro-background.svg'
 
 export const Container = styled.div`
   display: flex;
@@ -12,7 +12,7 @@ export const Container = styled.div`
 
 export const Subtitle = styled.p`
   font-family: ${(props) => props.theme.typography.roboto.fontFamily};
-  font-size: ${(props) => props.theme.typography.roboto.sizes.textL};
+  font-size: ${(props) => props.theme.typography.roboto.sizes.textL.fontSize};
   margin-top: 1rem;
 `
 
@@ -26,6 +26,10 @@ export const Item = styled.div`
   display: flex;
   align-items: center;
   gap: 0.75rem;
+
+  span {
+    font-size: ${(props) => props.theme.typography.roboto.sizes.textM.fontSize};
+  }
 `
 
 export const ItemRow = styled.div`

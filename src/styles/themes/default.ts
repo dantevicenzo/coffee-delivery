@@ -27,23 +27,23 @@ export const defaultTheme = {
       fontFamily: "'Baloo 2', cursive;",
       sizes: {
         titleXl: {
-          size: '3rem',
+          fontSize: '3rem',
           lineHeight: '1.3',
         },
         titleL: {
-          size: '2rem',
+          fontSize: '2rem',
           lineHeight: '1.3',
         },
         titleM: {
-          size: '1.5rem',
+          fontSize: '1.5rem',
           lineHeight: '1.3',
         },
         titleS: {
-          size: '1.25rem',
+          fontSize: '1.25rem',
           lineHeight: '1.3',
         },
         titleXs: {
-          size: '1.125rem',
+          fontSize: '1.125rem',
           lineHeight: '1.3',
         },
       },
@@ -52,31 +52,31 @@ export const defaultTheme = {
       fontFamily: "'Roboto', sans-serif;",
       sizes: {
         textL: {
-          size: '1.25rem',
+          fontSize: '1.25rem',
           lineHeight: '1.3',
         },
         textM: {
-          size: '1rem',
+          fontSize: '1rem',
           lineHeight: '1.3',
         },
         textS: {
-          size: '0.875rem',
+          fontSize: '0.875rem',
           lineHeight: '1.3',
         },
         textXs: {
-          size: '0.75rem',
+          fontSize: '0.75rem',
           lineHeight: '1.3',
         },
         tag: {
-          size: '0.625rem',
+          fontSize: '0.625rem',
           lineHeight: '1.3',
         },
         buttonG: {
-          size: '0.875rem',
+          fontSize: '0.875rem',
           lineHeight: '1.6',
         },
         buttonM: {
-          size: '0.75rem',
+          fontSize: '0.75rem',
           lineHeight: '1.6',
         },
       },

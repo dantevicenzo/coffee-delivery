@@ -19,8 +19,6 @@ export const HeaderContainer = styled.header`
       gap: 0.25rem;
 
       text-decoration: none;
-
-      transition: color, background-color 0.15s;
     }
   }
 `

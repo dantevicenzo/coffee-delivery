@@ -4,8 +4,10 @@ export const Container = styled.div`
   background-color: ${(props) => props.theme.color.baseButton};
   display: flex;
   align-items: center;
+  justify-content: center;
   border-radius: ${(props) => props.theme.borderRadius};
   padding: 0.5rem;
+  max-width: 5rem;
 `
 export const StepButton = styled.button`
   color: ${(props) => props.theme.color.purple};

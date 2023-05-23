@@ -57,3 +57,7 @@ export const RemoveButton = styled.button`
     }
   }
 `
+export const Divider = styled.hr`
+  margin: 1.5rem 0;
+  border: 1px solid ${(props) => props.theme.color.baseButton};
+`

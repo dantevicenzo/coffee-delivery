@@ -9,7 +9,10 @@ import {
   InfoContainer,
   PriceText,
   RemoveButton,
+  Divider,
 } from './styles'
+import { useContext } from 'react'
+import { CartContext } from '../../../contexts/CartContextProvider'
 
 interface IOrderItemProps {
   id: string
@@ -19,22 +22,31 @@ interface IOrderItemProps {
 }
 
 export function OrderItem({ id, imgSrc, title, price }: IOrderItemProps) {
+  const { removeProduct } = useContext(CartContext)
+
+  function handleRemoveProduct() {
+    removeProduct(id)
+  }
+
   return (
-    <Container>
-      <InfoContainer>
-        <CoffeeImg src={imgSrc} />
-        <div>
-          <CoffeeTitle>{title}</CoffeeTitle>
-          <ActionsContainer>
-            <InputNumber id={id} />
-            <RemoveButton>
-              <Trash size={16} />
-              Remover
-            </RemoveButton>
-          </ActionsContainer>
-        </div>
-      </InfoContainer>
-      <PriceText>{price}</PriceText>
-    </Container>
+    <>
+      <Container>
+        <InfoContainer>
+          <CoffeeImg src={imgSrc} />
+          <div>
+            <CoffeeTitle>{title}</CoffeeTitle>
+            <ActionsContainer>
+              <InputNumber id={`input-${id}`} />
+              <RemoveButton type="button" onClick={handleRemoveProduct}>
+                <Trash size={16} />
+                Remover
+              </RemoveButton>
+            </ActionsContainer>
+          </div>
+        </InfoContainer>
+        <PriceText>{price}</PriceText>
+      </Container>
+      <Divider />
+    </>
   )
 }

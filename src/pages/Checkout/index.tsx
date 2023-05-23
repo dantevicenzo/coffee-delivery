@@ -22,7 +22,6 @@ import {
   FormRow,
   PaymentMethodList,
   OrderConfirmationCard,
-  Divider,
   OrderPriceRow,
   OrderPriceContainer,
   OrderPriceTitle,
@@ -32,10 +31,19 @@ import {
 
 import { OrderItem } from './OrderItem'
 
-import imgExpressoTradicional from '../../assets/Type=Expresso.png'
-import imgLatte from '../../assets/Type=Latte.png'
+import { useContext } from 'react'
+import { CartContext } from '../../contexts/CartContextProvider'
+import { defaultCoffeeList } from '../Home/components/CoffeeList/defaultCoffeeList'
 
 export function Checkout() {
+  const { orderList } = useContext(CartContext)
+
+  function getCoffeeDataById(id: string) {
+    return defaultCoffeeList[
+      defaultCoffeeList.findIndex((coffee) => coffee.id === id)
+    ]
+  }
+
   return (
     <Form action="/success">
       <FormRow>
@@ -97,20 +105,15 @@ export function Checkout() {
       <FormRow>
         <TitleExtraSmall>Cafés selecionados</TitleExtraSmall>
         <OrderConfirmationCard>
-          <OrderItem
-            id="input-expressoTradicional"
-            imgSrc={imgExpressoTradicional}
-            title="Expresso Tradicional"
-            price="R$ 9,90"
-          />
-          <Divider />
-          <OrderItem
-            id="input-latte"
-            imgSrc={imgLatte}
-            title="Latte"
-            price="R$ 19,80"
-          />
-          <Divider />
+          {orderList.map((product) => (
+            <OrderItem
+              key={product.id}
+              id={product.id}
+              imgSrc={getCoffeeDataById(product.id).imgSrc}
+              title={getCoffeeDataById(product.id).title}
+              price={getCoffeeDataById(product.id).price}
+            />
+          ))}
           <OrderPriceContainer>
             <OrderPriceRow>
               <OrderPriceTitle>Total de itens</OrderPriceTitle>

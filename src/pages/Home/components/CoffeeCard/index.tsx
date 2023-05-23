@@ -9,6 +9,8 @@ import {
 } from './styles'
 import { InputNumber } from '../../../../components/InputNumber'
 import { ShoppingCart } from '@phosphor-icons/react'
+import { CartContext } from '../../../../contexts/CartContextProvider'
+import { useContext } from 'react'
 
 export interface ICoffeeCardProps {
   id: string
@@ -27,6 +29,19 @@ export function CoffeeCard({
   price,
   imgSrc,
 }: ICoffeeCardProps) {
+  const { addProduct } = useContext(CartContext)
+
+  function handleAddToCart() {
+    const quantity = Number(getInputNumber()?.value)
+    if (quantity > 0) {
+      addProduct(id, quantity)
+    }
+  }
+
+  function getInputNumber() {
+    return document.getElementById(`input-${id}`) as HTMLInputElement | null
+  }
+
   return (
     <Container>
       <img src={imgSrc} alt="" />
@@ -40,7 +55,7 @@ export function CoffeeCard({
       <PriceInputContainer>
         <Price>{price}</Price>
         <InputNumber id={`input-${id}`} />
-        <AddToCartButton>
+        <AddToCartButton onClick={handleAddToCart}>
           <ShoppingCart size={18} weight="fill" />
         </AddToCartButton>
       </PriceInputContainer>

@@ -132,10 +132,6 @@ export const PaymentMethodList = styled.ul`
     }
   }
 `
-export const Divider = styled.hr`
-  margin: 1.5rem 0;
-  border: 1px solid ${(props) => props.theme.color.baseButton};
-`
 
 export const OrderPriceRow = styled.div`
   display: flex;

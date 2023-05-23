@@ -37,9 +37,27 @@ import { CartContext } from '../../contexts/CartContextProvider'
 export function Checkout() {
   const { orderList, getCoffeeDataById } = useContext(CartContext)
 
+  const DELIVERY_FEE = 3.5
+
   function calcCoffeePriceVsQuantity(id: string, quantity: number) {
     const coffeePrice = Number(getCoffeeDataById(id).price.replace(',', '.'))
     const total = coffeePrice * quantity
+    return total.toFixed(2).replace('.', ',')
+  }
+
+  function getTotalItemsPrice() {
+    const total = orderList.reduce(
+      (total, item) =>
+        Number(getCoffeeDataById(item.id).price.replace(',', '.')) *
+          item.quantity +
+        total,
+      0,
+    )
+    return total.toFixed(2)
+  }
+
+  function getTotalOrderPrice() {
+    const total = Number(getTotalItemsPrice()) + DELIVERY_FEE
     return total.toFixed(2)
   }
 
@@ -117,15 +135,21 @@ export function Checkout() {
           <OrderPriceContainer>
             <OrderPriceRow>
               <OrderPriceTitle>Total de itens</OrderPriceTitle>
-              <OrderPriceValue>R$ 29,70</OrderPriceValue>
+              <OrderPriceValue>
+                R$ {getTotalItemsPrice().replace('.', ',')}
+              </OrderPriceValue>
             </OrderPriceRow>
             <OrderPriceRow>
               <OrderPriceTitle>Entrega</OrderPriceTitle>
-              <OrderPriceValue>R$ 3,50</OrderPriceValue>
+              <OrderPriceValue>
+                R$ {DELIVERY_FEE.toFixed(2).replace('.', ',')}
+              </OrderPriceValue>
             </OrderPriceRow>
             <OrderPriceRow>
               <OrderPriceTitle>Total</OrderPriceTitle>
-              <OrderPriceValue>R$ 33,20</OrderPriceValue>
+              <OrderPriceValue>
+                R$ {getTotalOrderPrice().replace('.', ',')}
+              </OrderPriceValue>
             </OrderPriceRow>
           </OrderPriceContainer>
           <ConfirmOrderButton type="submit">

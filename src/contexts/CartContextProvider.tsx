@@ -1,15 +1,14 @@
 import React, { ReactNode, useEffect, useReducer } from 'react'
 import { cartReducer } from '../reducers/cart/reducer'
-import { addProductAction, removeProductAction } from '../reducers/cart/actions'
-
-// interface ICoffee {
-//   id: string
-//   imgSrc: string
-//   tags: string[]
-//   title: string
-//   subtitle: string
-//   price: string
-// }
+import {
+  addProductAction,
+  decrementProductAction,
+  incrementProductAction,
+  removeProductAction,
+  updateQuantityAction,
+} from '../reducers/cart/actions'
+import { defaultCoffeeList } from '../pages/Home/components/CoffeeList/defaultCoffeeList'
+import { ICoffeeCardProps } from '../pages/Home/components/CoffeeCard'
 
 export interface IProduct {
   id: string
@@ -20,6 +19,10 @@ interface ICartContext {
   orderList: IProduct[]
   addProduct: (id: string, quantity: number) => void
   removeProduct: (id: string) => void
+  incrementProduct: (id: string) => void
+  decrementProduct: (id: string) => void
+  updateQuantity: (id: string, quantity: number) => void
+  getCoffeeDataById: (id: string) => ICoffeeCardProps
 }
 
 export const CartContext = React.createContext({} as ICartContext)
@@ -65,8 +68,36 @@ export function CartContextProvider({ children }: ICartContextProviderProps) {
     dispatch(removeProductAction(id))
   }
 
+  function incrementProduct(id: string) {
+    dispatch(incrementProductAction(id))
+  }
+
+  function decrementProduct(id: string) {
+    dispatch(decrementProductAction(id))
+  }
+
+  function updateQuantity(id: string, quantity: number) {
+    dispatch(updateQuantityAction(id, quantity))
+  }
+
+  function getCoffeeDataById(id: string) {
+    return defaultCoffeeList[
+      defaultCoffeeList.findIndex((coffee) => coffee.id === id)
+    ]
+  }
+
   return (
-    <CartContext.Provider value={{ orderList, addProduct, removeProduct }}>
+    <CartContext.Provider
+      value={{
+        orderList,
+        addProduct,
+        removeProduct,
+        incrementProduct,
+        decrementProduct,
+        updateQuantity,
+        getCoffeeDataById,
+      }}
+    >
       {children}
     </CartContext.Provider>
   )

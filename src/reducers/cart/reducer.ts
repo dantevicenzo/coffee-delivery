@@ -48,6 +48,56 @@ export function cartReducer(state: ICartState, action: any) {
         }
       })
     }
+    case ActionType.INCREMENT_PRODUCT: {
+      return produce(state, (draft) => {
+        console.log(state)
+        console.log(action)
+
+        const orderIndex = draft.orderList.findIndex(
+          (order) => order.id === action.payload.data.id,
+        )
+        console.log(orderIndex)
+        if (orderIndex > -1) {
+          draft.orderList[orderIndex].quantity++
+        }
+      })
+    }
+    case ActionType.DECREMENT_PRODUCT: {
+      return produce(state, (draft) => {
+        console.log(state)
+        console.log(action)
+
+        const orderIndex = draft.orderList.findIndex(
+          (order) => order.id === action.payload.data.id,
+        )
+        console.log(orderIndex)
+        if (orderIndex > -1) {
+          if (draft.orderList[orderIndex].quantity <= 1) {
+            draft.orderList.splice(orderIndex, 1)
+          } else {
+            draft.orderList[orderIndex].quantity--
+          }
+        }
+      })
+    }
+    case ActionType.UPDATE_QUANTITY: {
+      return produce(state, (draft) => {
+        console.log(state)
+        console.log(action)
+
+        const orderIndex = draft.orderList.findIndex(
+          (order) => order.id === action.payload.data.id,
+        )
+        console.log(orderIndex)
+        if (orderIndex > -1) {
+          if (action.payload.data.quantity < 1) {
+            draft.orderList.splice(orderIndex, 1)
+          } else {
+            draft.orderList[orderIndex].quantity = action.payload.data.quantity
+          }
+        }
+      })
+    }
     case ActionType.COMPLETE_ORDER: {
       return state
     }

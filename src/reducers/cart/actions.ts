@@ -4,6 +4,7 @@ export enum ActionType {
   REMOVE_PRODUCT = 'REMOVE_PRODUCT',
   INCREMENT_PRODUCT = 'INCREMENT_PRODUCT',
   DECREMENT_PRODUCT = 'DECREMENT_PRODUCT',
+  UPDATE_QUANTITY = 'UPDATE_QUANTITY',
   COMPLETE_ORDER = 'COMPLETE_ORDER',
 }
 
@@ -21,6 +22,33 @@ export function removeProductAction(id: string) {
     type: ActionType.REMOVE_PRODUCT,
     payload: {
       data: { id },
+    },
+  }
+}
+
+export function incrementProductAction(id: string) {
+  return {
+    type: ActionType.INCREMENT_PRODUCT,
+    payload: {
+      data: { id },
+    },
+  }
+}
+
+export function decrementProductAction(id: string) {
+  return {
+    type: ActionType.DECREMENT_PRODUCT,
+    payload: {
+      data: { id },
+    },
+  }
+}
+
+export function updateQuantityAction(id: string, quantity: number) {
+  return {
+    type: ActionType.UPDATE_QUANTITY,
+    payload: {
+      data: { id, quantity },
     },
   }
 }

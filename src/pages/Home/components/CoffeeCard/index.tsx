@@ -54,7 +54,7 @@ export function CoffeeCard({
       <Subtitle>{subtitle}</Subtitle>
       <PriceInputContainer>
         <Price>{price}</Price>
-        <InputNumber id={`input-${id}`} />
+        <InputNumber id={id} />
         <AddToCartButton onClick={handleAddToCart}>
           <ShoppingCart size={18} weight="fill" />
         </AddToCartButton>

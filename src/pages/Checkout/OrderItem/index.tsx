@@ -19,9 +19,16 @@ interface IOrderItemProps {
   imgSrc: string
   title: string
   price: string
+  quantity: number
 }
 
-export function OrderItem({ id, imgSrc, title, price }: IOrderItemProps) {
+export function OrderItem({
+  id,
+  imgSrc,
+  title,
+  price,
+  quantity,
+}: IOrderItemProps) {
   const { removeProduct } = useContext(CartContext)
 
   function handleRemoveProduct() {
@@ -36,7 +43,7 @@ export function OrderItem({ id, imgSrc, title, price }: IOrderItemProps) {
           <div>
             <CoffeeTitle>{title}</CoffeeTitle>
             <ActionsContainer>
-              <InputNumber id={`input-${id}`} />
+              <InputNumber id={id} quantity={quantity} changeOrderQuantity />
               <RemoveButton type="button" onClick={handleRemoveProduct}>
                 <Trash size={16} />
                 Remover

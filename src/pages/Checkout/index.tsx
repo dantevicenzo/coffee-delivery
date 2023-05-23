@@ -33,16 +33,9 @@ import { OrderItem } from './OrderItem'
 
 import { useContext } from 'react'
 import { CartContext } from '../../contexts/CartContextProvider'
-import { defaultCoffeeList } from '../Home/components/CoffeeList/defaultCoffeeList'
 
 export function Checkout() {
-  const { orderList } = useContext(CartContext)
-
-  function getCoffeeDataById(id: string) {
-    return defaultCoffeeList[
-      defaultCoffeeList.findIndex((coffee) => coffee.id === id)
-    ]
-  }
+  const { orderList, getCoffeeDataById } = useContext(CartContext)
 
   return (
     <Form action="/success">
@@ -112,6 +105,7 @@ export function Checkout() {
               imgSrc={getCoffeeDataById(product.id).imgSrc}
               title={getCoffeeDataById(product.id).title}
               price={getCoffeeDataById(product.id).price}
+              quantity={product.quantity}
             />
           ))}
           <OrderPriceContainer>

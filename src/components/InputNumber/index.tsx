@@ -1,36 +1,62 @@
+import { useContext, useState } from 'react'
 import { StyledInputNumber, StepButton, Container } from './styles'
 import { Minus, Plus } from '@phosphor-icons/react'
+import { CartContext } from '../../contexts/CartContextProvider'
 
 interface IInputNumberProps {
   id: string
+  defaultValue?: number
+  quantity?: number
+  changeOrderQuantity?: boolean
 }
 
-export function InputNumber({ id }: IInputNumberProps) {
+export function InputNumber({
+  id,
+  quantity = 0,
+  changeOrderQuantity = false,
+}: IInputNumberProps) {
+  const { incrementProduct, decrementProduct, updateQuantity } =
+    useContext(CartContext)
+
+  const [inputQuantity, setInputQuantity] = useState(quantity)
+
   function handleInputStepUp() {
-    getInputNumber()?.stepUp()
+    setInputQuantity((state) => state + 1)
+
+    if (changeOrderQuantity) {
+      incrementProduct(id)
+    }
   }
   function handleInputStepDown() {
-    getInputNumber()?.stepDown()
-  }
+    setInputQuantity((state) => state - 1)
 
-  function getInputNumber() {
-    return document.getElementById(id) as HTMLInputElement | null
+    if (changeOrderQuantity) {
+      decrementProduct(id)
+    }
+  }
+  function handleOnChange(e) {
+    const newQuantity = Number(e.target.value)
+    setInputQuantity(newQuantity)
+    if (changeOrderQuantity) {
+      updateQuantity(id, newQuantity)
+    }
   }
 
   return (
     <Container>
-      <StepButton onClick={handleInputStepDown}>
+      <StepButton type="button" onClick={handleInputStepDown}>
         <Minus size={14} />
       </StepButton>
       <StyledInputNumber
-        id={id}
+        id={`input-${id}`}
         className="input-number"
         type="number"
-        defaultValue={0}
         min={0}
         max={99}
+        onChange={handleOnChange}
+        value={inputQuantity}
       />
-      <StepButton onClick={handleInputStepUp}>
+      <StepButton type="button" onClick={handleInputStepUp}>
         <Plus size={14} />
       </StepButton>
     </Container>

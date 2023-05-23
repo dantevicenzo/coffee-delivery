@@ -3,10 +3,11 @@ import styled from 'styled-components'
 export const Container = styled.div`
   display: flex;
   flex-direction: column;
-  padding: 0 10rem;
+  padding: 0 1rem;
+  width: 72rem;
+  margin: 5rem auto;
 `
 export const TitleContainer = styled.div`
-  margin-top: 5rem;
   margin-bottom: 2.5rem;
 `
 
@@ -26,19 +27,16 @@ export const TextM = styled.p`
 export const InfoContainer = styled.div`
   display: flex;
   justify-content: space-between;
-`
 
-export const ImageColumn = styled.div`
-  display: flex;
-  flex: 1;
-  align-items: center;
-  justify-content: center;
+  img {
+    width: 39%;
+  }
 `
 
 export const InfoColumn = styled.div`
   display: flex;
   flex-direction: column;
-  flex: 1;
+  width: 33rem;
   gap: 2rem;
   padding: 2.5rem;
 

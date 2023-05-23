@@ -2,7 +2,6 @@ import { CurrencyDollar, MapPin, Timer } from '@phosphor-icons/react'
 import { RoundIcon } from '../../components/RoundIcon'
 import {
   Container,
-  ImageColumn,
   InfoColumn,
   InfoContainer,
   InfoRow,
@@ -57,9 +56,7 @@ export function Success() {
             </InfoTextContainer>
           </InfoRow>
         </InfoColumn>
-        <ImageColumn>
-          <img src={deliveryImage} />
-        </ImageColumn>
+        <img src={deliveryImage} />
       </InfoContainer>
     </Container>
   )

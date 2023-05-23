@@ -2,7 +2,8 @@ import styled from 'styled-components'
 
 export const Form = styled.form`
   display: flex;
-  padding: 0 10rem;
+  width: 70rem;
+  margin: 2.5rem auto;
   gap: 2rem;
 `
 interface IFormTitleContainerProps {

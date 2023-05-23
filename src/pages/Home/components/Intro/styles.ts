@@ -1,13 +1,17 @@
 import styled from 'styled-components'
 import backgroundImage from '../../../../assets/home-intro-background.svg'
 
-export const Container = styled.div`
-  display: flex;
-  gap: 3.5rem;
-  padding: 5.75rem 10rem;
+export const BackgroundContainer = styled.div`
   background-image: url(${backgroundImage});
   background-repeat: no-repeat;
   background-size: 100vw;
+`
+export const Container = styled.div`
+  display: flex;
+  padding: 0 1rem;
+  width: 72rem;
+  margin: 5.75rem auto;
+  gap: 3.5rem;
 `
 
 export const Subtitle = styled.p`

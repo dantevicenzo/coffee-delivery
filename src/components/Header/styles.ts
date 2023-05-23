@@ -54,5 +54,26 @@ export const CartLink = styled.a`
     svg {
       color: ${(props) => props.theme.color.yellowLight};
     }
+
+    & + span {
+      background: ${(props) => props.theme.color.yellow};
+    }
   }
+`
+export const CartCounter = styled.span`
+  font-size: ${(props) => props.theme.typography.roboto.sizes.textS.fontSize};
+  width: 1.25rem;
+  height: 1.25rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: ${(props) => props.theme.color.white};
+  background: ${(props) => props.theme.color.yellowDark};
+  font-weight: bold;
+
+  z-index: +1;
+  position: relative;
+  margin-left: -1.438rem;
+  margin-top: -2rem;
 `

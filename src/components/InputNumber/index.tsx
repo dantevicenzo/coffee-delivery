@@ -1,4 +1,4 @@
-import { useContext, useState } from 'react'
+import { ChangeEvent, useContext, useState } from 'react'
 import { StyledInputNumber, StepButton, Container } from './styles'
 import { Minus, Plus } from '@phosphor-icons/react'
 import { CartContext } from '../../contexts/CartContextProvider'
@@ -34,7 +34,7 @@ export function InputNumber({
       decrementProduct(id)
     }
   }
-  function handleOnChange(e) {
+  function handleOnChange(e: ChangeEvent<HTMLInputElement>) {
     const newQuantity = Number(e.target.value)
     setInputQuantity(newQuantity)
     if (changeOrderQuantity) {

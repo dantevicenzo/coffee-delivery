@@ -37,6 +37,12 @@ import { CartContext } from '../../contexts/CartContextProvider'
 export function Checkout() {
   const { orderList, getCoffeeDataById } = useContext(CartContext)
 
+  function calcCoffeePriceVsQuantity(id: string, quantity: number) {
+    const coffeePrice = Number(getCoffeeDataById(id).price.replace(',', '.'))
+    const total = coffeePrice * quantity
+    return total.toFixed(2)
+  }
+
   return (
     <Form action="/success">
       <FormRow>
@@ -104,7 +110,7 @@ export function Checkout() {
               id={product.id}
               imgSrc={getCoffeeDataById(product.id).imgSrc}
               title={getCoffeeDataById(product.id).title}
-              price={getCoffeeDataById(product.id).price}
+              price={calcCoffeePriceVsQuantity(product.id, product.quantity)}
               quantity={product.quantity}
             />
           ))}

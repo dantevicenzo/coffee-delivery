@@ -51,7 +51,7 @@ export function OrderItem({
             </ActionsContainer>
           </div>
         </InfoContainer>
-        <PriceText>{price}</PriceText>
+        <PriceText>R$ {price}</PriceText>
       </Container>
       <Divider />
     </>

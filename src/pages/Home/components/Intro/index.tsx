@@ -1,4 +1,5 @@
 import introImage from '../../../../assets/home-intro-image.png'
+import { RoundIcon } from '../../../../components/RoundIcon'
 import {
   Container,
   Item,
@@ -22,29 +23,29 @@ export function Intro() {
         <ItemContainer>
           <ItemRow>
             <Item>
-              <ItemIcon color="yellowDark">
+              <RoundIcon color="yellowDark">
                 <ShoppingCart size={16} weight="fill" />
-              </ItemIcon>
+              </RoundIcon>
               <span>Compra simples e segura</span>
             </Item>
             <Item>
-              <ItemIcon color="yellow">
+              <RoundIcon color="yellow">
                 <Timer size={16} weight="fill" />
-              </ItemIcon>
+              </RoundIcon>
               <span>Entrega rápida e rastreada</span>
             </Item>
           </ItemRow>
           <ItemRow>
             <Item>
-              <ItemIcon color="baseText">
+              <RoundIcon color="baseText">
                 <Package size={16} weight="fill" />
-              </ItemIcon>
+              </RoundIcon>
               <span>Embalagem mantém o café intacto</span>
             </Item>
             <Item>
-              <ItemIcon color="purple">
+              <RoundIcon color="purple">
                 <Coffee size={16} weight="fill" />
-              </ItemIcon>
+              </RoundIcon>
               <span>O café chega fresquinho até você</span>
             </Item>
           </ItemRow>

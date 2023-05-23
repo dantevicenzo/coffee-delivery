@@ -37,21 +37,3 @@ export const ItemRow = styled.div`
   flex-direction: column;
   gap: 1.25rem;
 `
-
-interface IItemIconProps {
-  color: 'yellow' | 'yellowDark' | 'baseText' | 'purple'
-}
-
-export const ItemIcon = styled.div<IItemIconProps>`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  width: 2rem;
-  height: 2rem;
-
-  border-radius: 50%;
-
-  color: ${(props) => props.theme.color.background};
-  background-color: ${(props) => props.theme.color[props.color]};
-`

@@ -11,6 +11,10 @@ import { CartContext } from '../../contexts/CartContextProvider'
 
 export function Header() {
   const { orderList } = useContext(CartContext)
+  const cartCounter = orderList.reduce(
+    (total, order) => (total += order.quantity),
+    0,
+  )
   return (
     <HeaderContainer>
       <a href="/">
@@ -24,7 +28,7 @@ export function Header() {
         <CartLink href="/checkout">
           <ShoppingCart size={24} weight="fill" />
         </CartLink>
-        {orderList.length > 0 && <CartCounter>{orderList.length}</CartCounter>}
+        {orderList.length > 0 && <CartCounter>{cartCounter}</CartCounter>}
       </nav>
     </HeaderContainer>
   )

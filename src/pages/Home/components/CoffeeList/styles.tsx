@@ -24,26 +24,33 @@ export const FilterList = styled.ul`
   display: flex;
   gap: 0.5rem;
 
-  li {
+  button {
     border: 1px solid ${(props) => props.theme.color.yellow};
     border-radius: 100px;
     padding: 0.375rem 0.75rem;
     font-size: 0;
 
-    a {
-      margin: 0;
-      text-decoration: none;
-      color: ${(props) => props.theme.color.yellowDark};
-      font-size: ${(props) => props.theme.typography.roboto.sizes.tag.fontSize};
-      font-weight: bold;
-      text-transform: uppercase;
+    margin: 0;
+    text-decoration: none;
+    color: ${(props) => props.theme.color.yellowDark};
+    font-size: ${(props) => props.theme.typography.roboto.sizes.tag.fontSize};
+    font-weight: bold;
+    text-transform: uppercase;
+
+    &:focus {
+      outline: none;
+      box-shadow: none;
     }
 
     &:hover {
+      cursor: pointer;
       background-color: ${(props) => props.theme.color.yellowDark};
-      a {
-        color: ${(props) => props.theme.color.background};
-      }
+      color: ${(props) => props.theme.color.background};
+    }
+
+    &.selected {
+      background-color: ${(props) => props.theme.color.yellowDark};
+      color: ${(props) => props.theme.color.background};
     }
   }
 `

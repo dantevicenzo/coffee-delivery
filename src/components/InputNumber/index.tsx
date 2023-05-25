@@ -5,7 +5,6 @@ import { CartContext } from '../../contexts/CartContextProvider'
 
 interface IInputNumberProps {
   id: string
-  defaultValue?: number
   quantity?: number
   changeOrderQuantity?: boolean
 }

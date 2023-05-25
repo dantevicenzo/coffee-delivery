@@ -11,7 +11,7 @@ import {
   RemoveButton,
   Divider,
 } from './styles'
-import { useContext } from 'react'
+import { useContext, useState } from 'react'
 import { CartContext } from '../../../contexts/CartContextProvider'
 
 interface IOrderItemProps {
@@ -22,14 +22,9 @@ interface IOrderItemProps {
   quantity: number
 }
 
-export function OrderItem({
-  id,
-  imgSrc,
-  title,
-  price,
-  quantity,
-}: IOrderItemProps) {
+export function OrderItem({ id, imgSrc, title, price }: IOrderItemProps) {
   const { removeProduct } = useContext(CartContext)
+  const [inputQuantity, setInputQuantity] = useState(0)
 
   function handleRemoveProduct() {
     removeProduct(id)
@@ -43,7 +38,12 @@ export function OrderItem({
           <div>
             <CoffeeTitle>{title}</CoffeeTitle>
             <ActionsContainer>
-              <InputNumber id={id} quantity={quantity} changeOrderQuantity />
+              <InputNumber
+                id={id}
+                value={inputQuantity}
+                setValue={setInputQuantity}
+                changeOrderQuantity
+              />
               <RemoveButton type="button" onClick={handleRemoveProduct}>
                 <Trash size={16} />
                 Remover

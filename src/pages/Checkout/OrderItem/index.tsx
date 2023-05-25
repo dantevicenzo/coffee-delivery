@@ -22,9 +22,15 @@ interface IOrderItemProps {
   quantity: number
 }
 
-export function OrderItem({ id, imgSrc, title, price }: IOrderItemProps) {
+export function OrderItem({
+  id,
+  imgSrc,
+  title,
+  price,
+  quantity,
+}: IOrderItemProps) {
   const { removeProduct } = useContext(CartContext)
-  const [inputQuantity, setInputQuantity] = useState(0)
+  const [inputQuantity, setInputQuantity] = useState(quantity)
 
   function handleRemoveProduct() {
     removeProduct(id)

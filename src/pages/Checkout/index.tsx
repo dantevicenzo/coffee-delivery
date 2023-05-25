@@ -60,7 +60,7 @@ export function Checkout() {
     formState: { errors },
   } = useForm()
 
-  function onSubmit(formData: ICheckoutFormData) {
+  function onSubmit(formData: any) {
     completeOrder(formData)
     navigate('/success')
   }

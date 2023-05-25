@@ -33,9 +33,49 @@ import { OrderItem } from './OrderItem'
 
 import { useContext } from 'react'
 import { CartContext } from '../../contexts/CartContextProvider'
+import { useForm } from 'react-hook-form'
+import { useNavigate } from 'react-router-dom'
+
+export interface ICheckoutFormData {
+  cep: string
+  city: string
+  compliment?: string
+  district: string
+  number: string
+  paymentMethod: 'creditCard' | 'debitCard' | 'money'
+  street: string
+  uf: string
+}
 
 export function Checkout() {
-  const { orderList, getCoffeeDataById } = useContext(CartContext)
+  const { orderList, getCoffeeDataById, completeOrder } =
+    useContext(CartContext)
+  const navigate = useNavigate()
+
+  const {
+    register,
+    handleSubmit,
+    watch,
+    setValue,
+    formState: { errors },
+  } = useForm()
+
+  function onSubmit(formData: ICheckoutFormData) {
+    completeOrder(formData)
+    navigate('/success')
+  }
+
+  const paymentMethod = watch('paymentMethod')
+
+  const isSelectedCreditCard = paymentMethod === 'creditCard'
+  const isSelectedDebitCard = paymentMethod === 'debitCard'
+  const isSelectedMoney = paymentMethod === 'money'
+
+  function handleSetPaymentMethod(
+    paymentMethod: 'creditCard' | 'debitCard' | 'money',
+  ) {
+    setValue('paymentMethod', paymentMethod)
+  }
 
   const DELIVERY_FEE = 3.5
 
@@ -62,7 +102,7 @@ export function Checkout() {
   }
 
   return (
-    <Form action="/success">
+    <Form onSubmit={handleSubmit(onSubmit)}>
       <FormRow>
         <TitleExtraSmall>Complete seu pedido</TitleExtraSmall>
         <FormContainer>
@@ -78,16 +118,44 @@ export function Checkout() {
             </FormTitleContainer>
 
             <InputContainer>
-              <InputM type="text" placeholder="CEP" />
-              <InputL type="text" placeholder="Rua" />
+              <InputM
+                type="text"
+                placeholder="CEP"
+                {...register('cep', { required: true })}
+              />
+              <InputL
+                type="text"
+                placeholder="Rua"
+                {...register('street', { required: true })}
+              />
               <InputRow>
-                <InputM type="text" placeholder="Número" />
-                <Input type="text" placeholder="Complemento" />
+                <InputM
+                  type="text"
+                  placeholder="Número"
+                  {...register('number', { required: true })}
+                />
+                <Input
+                  type="text"
+                  placeholder="Complemento"
+                  {...register('compliment')}
+                />
               </InputRow>
               <InputRow>
-                <InputM type="text" placeholder="Bairro" />
-                <Input type="text" placeholder="Cidade" />
-                <InputS type="text" placeholder="UF" />
+                <InputM
+                  type="text"
+                  placeholder="Bairro"
+                  {...register('district', { required: true })}
+                />
+                <Input
+                  type="text"
+                  placeholder="Cidade"
+                  {...register('city', { required: true })}
+                />
+                <InputS
+                  type="text"
+                  placeholder="UF"
+                  {...register('uf', { required: true })}
+                />
               </InputRow>
             </InputContainer>
           </FormCard>
@@ -102,18 +170,41 @@ export function Checkout() {
                 </TextSmall>
               </div>
             </FormTitleContainer>
+            <select hidden {...register('paymentMethod', { required: true })}>
+              <option value="creditCard">Cartão de crédito</option>
+              <option value="debitCard">Cartão de débito</option>
+              <option value="money">Dinheiro</option>
+            </select>
             <PaymentMethodList>
               <li>
-                <CreditCard size={16} />
-                Cartão de crédito
+                <button
+                  type="button"
+                  onClick={() => handleSetPaymentMethod('creditCard')}
+                  className={isSelectedCreditCard ? 'selected' : ''}
+                >
+                  <CreditCard size={16} />
+                  Cartão de crédito
+                </button>
               </li>
               <li>
-                <Bank size={16} />
-                Cartão de débito
+                <button
+                  type="button"
+                  onClick={() => handleSetPaymentMethod('debitCard')}
+                  className={isSelectedDebitCard ? 'selected' : ''}
+                >
+                  <Bank size={16} />
+                  Cartão de débito
+                </button>
               </li>
               <li>
-                <Money size={16} />
-                Dinheiro
+                <button
+                  type="button"
+                  onClick={() => handleSetPaymentMethod('money')}
+                  className={isSelectedMoney ? 'selected' : ''}
+                >
+                  <Money size={16} />
+                  Dinheiro
+                </button>
               </li>
             </PaymentMethodList>
           </FormCard>
@@ -152,6 +243,7 @@ export function Checkout() {
               </OrderPriceValue>
             </OrderPriceRow>
           </OrderPriceContainer>
+          {errors.exampleRequired && <span>This field is required</span>}
           <ConfirmOrderButton type="submit">
             Confirmar Pedido
           </ConfirmOrderButton>

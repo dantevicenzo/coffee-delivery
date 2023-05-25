@@ -12,8 +12,23 @@ import {
   TitleL,
 } from './styles'
 import deliveryImage from '../../assets/delivery-image.svg'
+import { useContext } from 'react'
+import { CartContext } from '../../contexts/CartContextProvider'
 
 export function Success() {
+  const { deliveryAddress, paymentMethod } = useContext(CartContext)
+
+  function getFormattedPaymentMethod() {
+    switch (paymentMethod) {
+      case 'creditCard':
+        return 'Cartão de Crédito'
+      case 'debitCard':
+        return 'Cartão de Débito'
+      case 'money':
+        return 'Dinheiro'
+    }
+  }
+
   return (
     <Container>
       <TitleContainer>
@@ -28,9 +43,12 @@ export function Success() {
             </RoundIcon>
             <InfoTextContainer>
               <TextM>
-                Entrega em <strong>Rua João Daniel Martinelli, 102</strong>
+                Entrega em
+                <strong>{` ${deliveryAddress?.street}, ${deliveryAddress?.number}`}</strong>
               </TextM>
-              <TextM>Farrapos - Porto Alegre, RS</TextM>
+              <TextM>
+                {`${deliveryAddress?.district} - ${deliveryAddress?.city}, ${deliveryAddress?.uf}`}
+              </TextM>
             </InfoTextContainer>
           </InfoRow>
           <InfoRow>
@@ -51,12 +69,12 @@ export function Success() {
             <InfoTextContainer>
               <TextM>Pagamento na entrega</TextM>
               <TextM>
-                <strong>Cartão de Crédito</strong>
+                <strong>{getFormattedPaymentMethod()}</strong>
               </TextM>
             </InfoTextContainer>
           </InfoRow>
         </InfoColumn>
-        <img src={deliveryImage} />
+        <img src={deliveryImage} alt="" />
       </InfoContainer>
     </Container>
   )

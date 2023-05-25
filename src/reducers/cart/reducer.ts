@@ -1,18 +1,10 @@
 import { produce } from 'immer'
 import { ActionType } from './actions'
-import { IProduct } from '../../contexts/CartContextProvider'
+import { IDeliveryAddress, IProduct } from '../../contexts/CartContextProvider'
 
 interface ICartState {
   orderList: IProduct[]
-  deliveryAddress: {
-    cep: string
-    street: string
-    number: string
-    complement: string
-    dristrict: string
-    city: string
-    uf: string
-  }
+  deliveryAddress: IDeliveryAddress
   paymentMethod: 'creditCard' | 'debitCard' | 'money'
 }
 
@@ -99,7 +91,20 @@ export function cartReducer(state: ICartState, action: any) {
       })
     }
     case ActionType.COMPLETE_ORDER: {
-      return state
+      return produce(state, (draft) => {
+        draft.deliveryAddress.cep = action.payload.data.formData.cep
+        draft.deliveryAddress.city = action.payload.data.formData.city
+        draft.deliveryAddress.complement =
+          action.payload.data.formData.complement
+        draft.deliveryAddress.district = action.payload.data.formData.district
+        draft.deliveryAddress.number = action.payload.data.formData.number
+        draft.deliveryAddress.street = action.payload.data.formData.street
+        draft.deliveryAddress.uf = action.payload.data.formData.uf
+
+        draft.paymentMethod = action.payload.data.formData.paymentMethod
+
+        draft.orderList = []
+      })
     }
     default: {
       return state

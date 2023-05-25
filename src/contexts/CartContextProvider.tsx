@@ -2,6 +2,7 @@ import React, { ReactNode, useEffect, useReducer } from 'react'
 import { cartReducer } from '../reducers/cart/reducer'
 import {
   addProductAction,
+  completeOrderAction,
   decrementProductAction,
   incrementProductAction,
   removeProductAction,
@@ -9,19 +10,33 @@ import {
 } from '../reducers/cart/actions'
 import { defaultCoffeeList } from '../pages/Home/components/CoffeeList/defaultCoffeeList'
 import { ICoffeeCardProps } from '../pages/Home/components/CoffeeCard'
+import { ICheckoutFormData } from '../pages/Checkout'
 
 export interface IProduct {
   id: string
   quantity: number
 }
 
+export interface IDeliveryAddress {
+  cep: string
+  street: string
+  number: string
+  complement?: string
+  district: string
+  city: string
+  uf: string
+}
+
 interface ICartContext {
   orderList: IProduct[]
+  paymentMethod?: string
+  deliveryAddress?: IDeliveryAddress
   addProduct: (id: string, quantity: number) => void
   removeProduct: (id: string) => void
   incrementProduct: (id: string) => void
   decrementProduct: (id: string) => void
   updateQuantity: (id: string, quantity: number) => void
+  completeOrder: (formData: ICheckoutFormData) => void
   getCoffeeDataById: (id: string) => ICoffeeCardProps
 }
 
@@ -58,7 +73,7 @@ export function CartContextProvider({ children }: ICartContextProviderProps) {
     localStorage.setItem('@coffee-delivery:cart-state-1.0.0', stateJSON)
   }, [cartState])
 
-  const { orderList } = cartState
+  const { orderList, deliveryAddress, paymentMethod } = cartState
 
   function addProduct(id: string, quantity: number) {
     dispatch(addProductAction(id, quantity))
@@ -80,6 +95,10 @@ export function CartContextProvider({ children }: ICartContextProviderProps) {
     dispatch(updateQuantityAction(id, quantity))
   }
 
+  function completeOrder(formData: ICheckoutFormData) {
+    dispatch(completeOrderAction(formData))
+  }
+
   function getCoffeeDataById(id: string) {
     return defaultCoffeeList[
       defaultCoffeeList.findIndex((coffee) => coffee.id === id)
@@ -90,11 +109,14 @@ export function CartContextProvider({ children }: ICartContextProviderProps) {
     <CartContext.Provider
       value={{
         orderList,
+        paymentMethod,
+        deliveryAddress,
         addProduct,
         removeProduct,
         incrementProduct,
         decrementProduct,
         updateQuantity,
+        completeOrder,
         getCoffeeDataById,
       }}
     >

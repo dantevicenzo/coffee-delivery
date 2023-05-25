@@ -107,28 +107,48 @@ export const PaymentMethodList = styled.ul`
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 0.75rem;
+
     flex: 1;
-    padding: 1rem 0;
-    border-radius: ${(props) => props.theme.borderRadius};
 
-    color: ${(props) => props.theme.color.baseText};
-    background-color: ${(props) => props.theme.color.baseButton};
+    button {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1rem 0;
+      gap: 0.75rem;
+      flex: 1;
 
-    text-transform: uppercase;
+      border: none;
+      border-radius: ${(props) => props.theme.borderRadius};
 
-    font-size: ${(props) =>
-      props.theme.typography.roboto.sizes.buttonM.fontSize};
-    line-height: 0;
+      color: ${(props) => props.theme.color.baseText};
+      background-color: ${(props) => props.theme.color.baseButton};
+      text-transform: uppercase;
 
-    svg {
-      color: ${(props) => props.theme.color.purple};
-    }
+      font-family: ${(props) => props.theme.typography.roboto.fontFamily};
+      font-size: ${(props) =>
+        props.theme.typography.roboto.sizes.buttonM.fontSize};
+      line-height: 0;
 
-    &:hover {
-      cursor: pointer;
-      background-color: ${(props) => props.theme.color.baseHover};
-      color: ${(props) => props.theme.color.baseSubtitle};
+      svg {
+        color: ${(props) => props.theme.color.purple};
+      }
+
+      &:focus {
+        outline: none;
+        box-shadow: none;
+      }
+
+      &:hover {
+        cursor: pointer;
+        background-color: ${(props) => props.theme.color.baseHover};
+        color: ${(props) => props.theme.color.baseSubtitle};
+      }
+
+      &.selected {
+        background-color: ${(props) => props.theme.color.purpleLight};
+        border: 1px solid ${(props) => props.theme.color.purple};
+      }
     }
   }
 `

@@ -2,7 +2,8 @@ import styled from 'styled-components'
 
 export const Form = styled.form`
   display: flex;
-  width: 70rem;
+  width: 72rem;
+  padding: 0 1rem;
   margin: 2.5rem auto;
   gap: 2rem;
 `
@@ -41,6 +42,7 @@ export const FormContainer = styled.div`
   display: flex;
   flex-direction: column;
   gap: 0.75rem;
+  width: 40rem;
 `
 export const FormRow = styled.div``
 export const FormCard = styled.div`

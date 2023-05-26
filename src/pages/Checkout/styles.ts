@@ -93,7 +93,7 @@ export const WrapInputOptionalPlaceholder = styled.span`
     background: transparent;
   }
 
-  &:has(input:placeholder-shown) {
+  &:has(input:optional:placeholder-shown) {
     &:before {
       content: 'Opcional';
       position: absolute;

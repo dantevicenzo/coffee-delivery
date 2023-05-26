@@ -14,7 +14,8 @@ export const HeaderContainer = styled.header`
     align-items: center;
     gap: 0.75rem;
 
-    a {
+    a,
+    span {
       padding: 0.5rem;
       border-radius: ${(props) => props.theme.borderRadius};
       display: flex;
@@ -26,7 +27,7 @@ export const HeaderContainer = styled.header`
   }
 `
 
-export const SetLocationLink = styled.a`
+export const CurrentLocation = styled.span`
   color: ${(props) => props.theme.color.purpleDark};
   background-color: ${(props) => props.theme.color.purpleLight};
 
@@ -34,11 +35,7 @@ export const SetLocationLink = styled.a`
     color: ${(props) => props.theme.color.purple};
   }
 
-  &:hover {
-    cursor: pointer;
-    color: ${(props) => props.theme.color.purpleLight};
-    background-color: ${(props) => props.theme.color.purpleDark};
-  }
+  user-select: none;
 `
 export const CartLink = styled.a`
   background-color: ${(props) => props.theme.color.yellowLight};

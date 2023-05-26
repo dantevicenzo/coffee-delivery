@@ -10,12 +10,8 @@ import {
   FormContainer,
   FormCard,
   FormTitleContainer,
-  Input,
   InputContainer,
-  InputL,
-  InputM,
   InputRow,
-  InputS,
   TextMedium,
   TextSmall,
   TitleExtraSmall,
@@ -27,7 +23,8 @@ import {
   OrderPriceTitle,
   OrderPriceValue,
   ConfirmOrderButton,
-  WrapInputOptionalPlaceholder,
+  ExtendedOptionalPlaceholder,
+  InputText,
 } from './styles'
 
 import { OrderItem } from './OrderItem'
@@ -124,42 +121,49 @@ export function Checkout() {
             </FormTitleContainer>
 
             <InputContainer>
-              <InputM
+              <InputText
+                variantSize="M"
                 type="text"
                 placeholder="CEP"
                 {...register('cep', { required: true })}
               />
-              <InputL
+              <InputText
+                variantSize="L"
                 type="text"
                 placeholder="Rua"
                 {...register('street', { required: true })}
               />
               <InputRow>
-                <InputM
+                <InputText
+                  variantSize="M"
                   type="text"
                   placeholder="Número"
                   {...register('number', { required: true })}
                 />
-                <WrapInputOptionalPlaceholder>
-                  <Input
+                <ExtendedOptionalPlaceholder>
+                  <InputText
+                    variantSize="FLEX"
                     type="text"
                     placeholder="Complemento"
                     {...register('compliment')}
                   />
-                </WrapInputOptionalPlaceholder>
+                </ExtendedOptionalPlaceholder>
               </InputRow>
               <InputRow>
-                <InputM
+                <InputText
+                  variantSize="M"
                   type="text"
                   placeholder="Bairro"
                   {...register('district', { required: true })}
                 />
-                <Input
+                <InputText
+                  variantSize="FLEX"
                   type="text"
                   placeholder="Cidade"
                   {...register('city', { required: true })}
                 />
-                <InputS
+                <InputText
+                  variantSize="S"
                   type="text"
                   placeholder="UF"
                   {...register('uf', { required: true })}

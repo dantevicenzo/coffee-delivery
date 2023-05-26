@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 
 export const Form = styled.form`
   display: flex;
@@ -73,7 +73,7 @@ export const InputRow = styled.div`
   display: flex;
   gap: 0.75rem;
 `
-export const WrapInputOptionalPlaceholder = styled.span`
+export const ExtendedOptionalPlaceholder = styled.span`
   display: flex;
   flex: 1;
   position: relative;
@@ -109,30 +109,39 @@ export const WrapInputOptionalPlaceholder = styled.span`
   }
 `
 
-const BaseInput = styled.input`
+interface IInputTextProps {
+  variantSize: 'S' | 'M' | 'L' | 'FLEX'
+}
+
+export const InputText = styled.input<IInputTextProps>`
   border-radius: 4px;
   background-color: ${(props) => props.theme.color.baseInput};
   padding: 0.75rem;
   border: 1px solid ${(props) => props.theme.color.baseButton};
-`
 
-export const Input = styled(BaseInput)`
-  display: inline;
-  flex: 1;
-`
-
-export const InputS = styled(BaseInput)`
-  display: inline;
-  width: 3.75rem;
-`
-
-export const InputM = styled(BaseInput)`
-  display: inline;
-  width: 12.5rem;
-`
-
-export const InputL = styled(BaseInput)`
-  width: 35rem;
+  ${({ variantSize }) =>
+    variantSize === 'FLEX' &&
+    css`
+      display: inline;
+      flex: 1;
+    `}
+  ${({ variantSize }) =>
+    variantSize === 'S' &&
+    css`
+      display: inline;
+      width: 3.75rem;
+    `}
+  ${({ variantSize }) =>
+    variantSize === 'M' &&
+    css`
+      display: inline;
+      width: 12.5rem;
+    `}
+  ${({ variantSize }) =>
+    variantSize === 'L' &&
+    css`
+      width: 35rem;
+    `}
 `
 
 export const PaymentMethodList = styled.ul`

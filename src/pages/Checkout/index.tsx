@@ -27,6 +27,7 @@ import {
   OrderPriceTitle,
   OrderPriceValue,
   ConfirmOrderButton,
+  WrapInputOptionalPlaceholder,
 } from './styles'
 
 import { OrderItem } from './OrderItem'
@@ -139,11 +140,13 @@ export function Checkout() {
                   placeholder="Número"
                   {...register('number', { required: true })}
                 />
-                <Input
-                  type="text"
-                  placeholder="Complemento"
-                  {...register('compliment')}
-                />
+                <WrapInputOptionalPlaceholder>
+                  <Input
+                    type="text"
+                    placeholder="Complemento"
+                    {...register('compliment')}
+                  />
+                </WrapInputOptionalPlaceholder>
               </InputRow>
               <InputRow>
                 <InputM

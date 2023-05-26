@@ -73,6 +73,42 @@ export const InputRow = styled.div`
   display: flex;
   gap: 0.75rem;
 `
+export const WrapInputOptionalPlaceholder = styled.span`
+  display: flex;
+  flex: 1;
+  position: relative;
+
+  &:before,
+  &::placeholder {
+    font-family: ${(props) => props.theme.typography.roboto.fontFamily};
+    text-align: right;
+    font-style: italic;
+    font-size: 0.75rem;
+    padding: 1rem 0.125rem;
+    line-height: 1.3;
+  }
+
+  &::placeholder {
+    color: transparent;
+    background: transparent;
+  }
+
+  &:has(input:placeholder-shown) {
+    &:before {
+      content: 'Opcional';
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      color: ${(props) => props.theme.color.baseText};
+      background: transparent;
+      width: calc(100% - 10px);
+      white-space: nowrap;
+      overflow: hidden;
+      pointer-events: none;
+    }
+  }
+`
+
 const BaseInput = styled.input`
   border-radius: 4px;
   background-color: ${(props) => props.theme.color.baseInput};

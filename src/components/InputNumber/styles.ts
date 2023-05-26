@@ -10,18 +10,23 @@ export const Container = styled.div`
   max-width: 5rem;
 `
 export const StepButton = styled.button`
+  display: flex;
+  align-items: center;
+  justify-content: center;
   color: ${(props) => props.theme.color.purple};
   background-color: transparent;
   border: none;
 
   &:hover {
     cursor: pointer;
+    color: ${(props) => props.theme.color.purpleDark};
   }
 `
 
 export const StyledInputNumber = styled.input`
   width: 1.5rem;
   text-align: center;
+  line-height: 0;
   margin: 0 0.25rem;
   border: none;
   background-color: transparent;

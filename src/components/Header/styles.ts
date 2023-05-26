@@ -9,6 +9,11 @@ export const HeaderContainer = styled.header`
   width: 72rem;
   margin: 2rem auto;
 
+  a:focus {
+    outline: none;
+    box-shadow: none;
+  }
+
   nav {
     display: flex;
     align-items: center;

@@ -56,6 +56,11 @@ export const RemoveButton = styled.button`
       color: ${(props) => props.theme.color.purpleDark};
     }
   }
+
+  &:focus {
+    outline: none;
+    box-shadow: none;
+  }
 `
 export const Divider = styled.hr`
   margin: 1.5rem 0;

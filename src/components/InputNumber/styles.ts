@@ -17,6 +17,11 @@ export const StepButton = styled.button`
   background-color: transparent;
   border: none;
 
+  &:focus {
+    outline: none;
+    box-shadow: none;
+  }
+
   &:hover {
     cursor: pointer;
     color: ${(props) => props.theme.color.purpleDark};

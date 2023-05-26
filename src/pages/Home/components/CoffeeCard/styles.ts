@@ -95,4 +95,9 @@ export const AddToCartButton = styled.button`
     cursor: pointer;
     background-color: ${(props) => props.theme.color.purple};
   }
+
+  &:focus {
+    outline: none;
+    box-shadow: none;
+  }
 `

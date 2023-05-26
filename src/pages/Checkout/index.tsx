@@ -225,39 +225,48 @@ export function Checkout() {
       <FormRow>
         <TitleExtraSmall>Cafés selecionados</TitleExtraSmall>
         <OrderConfirmationCard>
-          {orderList.map((product) => (
-            <OrderItem
-              key={product.id}
-              id={product.id}
-              imgSrc={getCoffeeDataById(product.id).imgSrc}
-              title={getCoffeeDataById(product.id).title}
-              price={calcCoffeePriceVsQuantity(product.id, product.quantity)}
-              quantity={product.quantity}
-            />
-          ))}
-          <OrderPriceContainer>
-            <OrderPriceRow>
-              <OrderPriceTitle>Total de itens</OrderPriceTitle>
-              <OrderPriceValue>
-                R$ {getTotalItemsPrice().replace('.', ',')}
-              </OrderPriceValue>
-            </OrderPriceRow>
-            <OrderPriceRow>
-              <OrderPriceTitle>Entrega</OrderPriceTitle>
-              <OrderPriceValue>
-                R$ {DELIVERY_FEE.toFixed(2).replace('.', ',')}
-              </OrderPriceValue>
-            </OrderPriceRow>
-            <OrderPriceRow>
-              <OrderPriceTitle>Total</OrderPriceTitle>
-              <OrderPriceValue>
-                R$ {getTotalOrderPrice().replace('.', ',')}
-              </OrderPriceValue>
-            </OrderPriceRow>
-          </OrderPriceContainer>
-          <ConfirmOrderButton type="submit">
-            Confirmar Pedido
-          </ConfirmOrderButton>
+          {orderList.length > 0 ? (
+            <>
+              {orderList.map((product) => (
+                <OrderItem
+                  key={product.id}
+                  id={product.id}
+                  imgSrc={getCoffeeDataById(product.id).imgSrc}
+                  title={getCoffeeDataById(product.id).title}
+                  price={calcCoffeePriceVsQuantity(
+                    product.id,
+                    product.quantity,
+                  )}
+                  quantity={product.quantity}
+                />
+              ))}
+              <OrderPriceContainer>
+                <OrderPriceRow>
+                  <OrderPriceTitle>Total de itens</OrderPriceTitle>
+                  <OrderPriceValue>
+                    R$ {getTotalItemsPrice().replace('.', ',')}
+                  </OrderPriceValue>
+                </OrderPriceRow>
+                <OrderPriceRow>
+                  <OrderPriceTitle>Entrega</OrderPriceTitle>
+                  <OrderPriceValue>
+                    R$ {DELIVERY_FEE.toFixed(2).replace('.', ',')}
+                  </OrderPriceValue>
+                </OrderPriceRow>
+                <OrderPriceRow>
+                  <OrderPriceTitle>Total</OrderPriceTitle>
+                  <OrderPriceValue>
+                    R$ {getTotalOrderPrice().replace('.', ',')}
+                  </OrderPriceValue>
+                </OrderPriceRow>
+              </OrderPriceContainer>
+              <ConfirmOrderButton type="submit">
+                Confirmar Pedido
+              </ConfirmOrderButton>
+            </>
+          ) : (
+            <TextMedium>Seu carrinho está vazio.</TextMedium>
+          )}
         </OrderConfirmationCard>
       </FormRow>
     </Form>

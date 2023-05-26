@@ -227,8 +227,13 @@ export const ConfirmOrderButton = styled.button`
   font-size: ${(props) => props.theme.typography.roboto.sizes.buttonG.fontSize};
   padding: 0.75rem 0;
 
-  &:hover {
+  &:hover:enabled {
     cursor: pointer;
     background-color: ${(props) => props.theme.color.yellowDark};
+  }
+
+  &:disabled {
+    cursor: not-allowed;
+    background-color: ${(props) => props.theme.color.baseHover};
   }
 `

@@ -1,4 +1,4 @@
-import { ICheckoutFormData } from '../../pages/Checkout'
+import { TCheckoutFormData } from '../../pages/Checkout'
 
 /* eslint-disable no-unused-vars */
 export enum ActionType {
@@ -55,7 +55,7 @@ export function updateQuantityAction(id: string, quantity: number) {
   }
 }
 
-export function completeOrderAction(formData: ICheckoutFormData) {
+export function completeOrderAction(formData: TCheckoutFormData) {
   return {
     type: ActionType.COMPLETE_ORDER,
     payload: {

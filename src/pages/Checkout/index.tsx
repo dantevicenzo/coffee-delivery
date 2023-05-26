@@ -35,32 +35,37 @@ import { useContext } from 'react'
 import { CartContext } from '../../contexts/CartContextProvider'
 import { useForm } from 'react-hook-form'
 import { useNavigate } from 'react-router-dom'
+import { zodResolver } from '@hookform/resolvers/zod'
+import * as z from 'zod'
 
-export interface ICheckoutFormData {
-  cep: string
-  city: string
-  compliment?: string
-  district: string
-  number: string
-  paymentMethod: 'creditCard' | 'debitCard' | 'money'
-  street: string
-  uf: string
-}
+const orderFormValidationSchema = z.object({
+  cep: z.string().min(1, { message: 'Informe o CEP' }),
+  city: z.string().min(1, { message: 'Informe a Cidade' }),
+  compliment: z.string().optional(),
+  district: z.string().min(1, { message: 'Informe o Bairro' }),
+  number: z.string().min(1, { message: 'Informe o Número' }),
+  street: z.string().min(1, { message: 'Informe a Rua' }),
+  uf: z.string().min(1, { message: 'Informe o Estado' }),
+  paymentMethod: z.union([
+    z.literal('creditCard'),
+    z.literal('debitCard'),
+    z.literal('money'),
+  ]),
+})
+
+export type TCheckoutFormData = z.infer<typeof orderFormValidationSchema>
 
 export function Checkout() {
   const { orderList, getCoffeeDataById, completeOrder } =
     useContext(CartContext)
   const navigate = useNavigate()
 
-  const {
-    register,
-    handleSubmit,
-    watch,
-    setValue,
-    formState: { errors },
-  } = useForm()
+  const { register, handleSubmit, watch, setValue } =
+    useForm<TCheckoutFormData>({
+      resolver: zodResolver(orderFormValidationSchema),
+    })
 
-  function onSubmit(formData: any) {
+  function onSubmit(formData: TCheckoutFormData) {
     completeOrder(formData)
     navigate('/success')
   }
@@ -243,7 +248,6 @@ export function Checkout() {
               </OrderPriceValue>
             </OrderPriceRow>
           </OrderPriceContainer>
-          {errors.exampleRequired && <span>This field is required</span>}
           <ConfirmOrderButton type="submit">
             Confirmar Pedido
           </ConfirmOrderButton>

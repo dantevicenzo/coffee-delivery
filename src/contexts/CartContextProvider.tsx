@@ -10,7 +10,7 @@ import {
 } from '../reducers/cart/actions'
 import { defaultCoffeeList } from '../pages/Home/components/CoffeeList/defaultCoffeeList'
 import { ICoffeeCardProps } from '../pages/Home/components/CoffeeCard'
-import { ICheckoutFormData } from '../pages/Checkout'
+import { TCheckoutFormData } from '../pages/Checkout'
 
 export interface IProduct {
   id: string
@@ -36,7 +36,7 @@ interface ICartContext {
   incrementProduct: (id: string) => void
   decrementProduct: (id: string) => void
   updateQuantity: (id: string, quantity: number) => void
-  completeOrder: (formData: ICheckoutFormData) => void
+  completeOrder: (formData: TCheckoutFormData) => void
   getCoffeeDataById: (id: string) => ICoffeeCardProps
 }
 
@@ -95,7 +95,7 @@ export function CartContextProvider({ children }: ICartContextProviderProps) {
     dispatch(updateQuantityAction(id, quantity))
   }
 
-  function completeOrder(formData: ICheckoutFormData) {
+  function completeOrder(formData: TCheckoutFormData) {
     dispatch(completeOrderAction(formData))
   }
 

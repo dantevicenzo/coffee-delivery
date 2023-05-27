@@ -183,6 +183,7 @@ export function Checkout() {
               </div>
             </FormTitleContainer>
             <select hidden {...register('paymentMethod', { required: true })}>
+              <option selected disabled hidden></option>
               <option value="creditCard">Cartão de crédito</option>
               <option value="debitCard">Cartão de débito</option>
               <option value="money">Dinheiro</option>
